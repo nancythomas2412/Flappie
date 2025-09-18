@@ -31,18 +31,19 @@ class PrivacyManager(private val context: Context) {
         
         // Data we collect (for transparency)
         val COLLECTED_DATA = listOf(
-            "Game scores and achievements",
-            "App usage statistics (anonymous)",
-            "Device information (for compatibility)",
-            "Crash reports (to improve stability)"
+            "Game scores and achievements (stored locally)",
+            "Advertising data via Google AdMob",
+            "Device information for ad compatibility",
+            "Advertising ID for personalized ads",
+            "General location for relevant ads (if permitted)"
         )
-        
+
         val NOT_COLLECTED_DATA = listOf(
-            "Personal information",
-            "Contact details", 
-            "Location data",
-            "Photos or files",
-            "Microphone or camera access"
+            "Personal information (name, email, phone)",
+            "Precise location data",
+            "Photos, files, or media",
+            "Microphone or camera access",
+            "Contacts or calendar data"
         )
     }
     
@@ -70,21 +71,27 @@ class PrivacyManager(private val context: Context) {
         
         val message = """
             🔒 Privacy & Data Protection
-            
+
             Flappie respects your privacy! Here's what you should know:
-            
+
             ✅ What we collect:
-            • Game scores and progress
-            • Anonymous usage statistics  
-            • Device compatibility info
-            
-            ❌ What we DON'T collect:
-            • Personal information
-            • Location data
-            • Photos or contacts
-            
-            All data stays on your device or is anonymized.
-            
+            • Game scores and progress (stored locally)
+            • Advertising data via Google AdMob
+            • Device info for ad compatibility
+
+            ✅ What ads collect:
+            • Advertising ID for personalized ads
+            • General location for relevant ads
+            • Ad interaction data
+
+            ❌ What we DON'T collect directly:
+            • Personal information (name, email)
+            • Photos, contacts, or files
+            • Precise location data
+
+            You can control ad personalization in device settings.
+            Premium upgrade available to remove ads.
+
             By playing, you agree to our privacy practices.
         """.trimIndent()
         
@@ -183,37 +190,49 @@ class PrivacyManager(private val context: Context) {
     private fun showPrivacyPolicyText(activity: android.app.Activity) {
         val privacyText = """
             FLAPPIE PRIVACY POLICY
-            
+
             Last updated: ${java.text.SimpleDateFormat("MMMM dd, yyyy", java.util.Locale.getDefault()).format(java.util.Date())}
-            
+            Developer: DeCoCo
+
             1. INFORMATION WE COLLECT
             • Game scores and achievements (stored locally)
-            • Anonymous usage statistics
-            • Device information for compatibility
-            • Crash reports to improve stability
-            
-            2. INFORMATION WE DON'T COLLECT
-            • Personal information or contact details
-            • Location data
+            • Advertising data via Google AdMob
+            • Device information for ad compatibility
+            • Advertising ID for personalized ads
+            • General location for relevant ads (if permitted)
+
+            2. INFORMATION WE DON'T COLLECT DIRECTLY
+            • Personal information (name, email, phone)
+            • Precise location data
             • Photos, files, or media
             • Microphone or camera access
-            
+
             3. HOW WE USE INFORMATION
-            • To provide and improve the game
-            • To fix bugs and crashes
-            • To understand how players engage with the game
-            
+            • To provide and improve the game experience
+            • To display relevant advertisements
+            • To measure ad performance and effectiveness
+            • To fix bugs and improve stability
+
             4. DATA SHARING
-            We do not sell, trade, or share your personal information with third parties.
-            
-            5. CHILDREN'S PRIVACY
-            We comply with COPPA and do not knowingly collect personal information from children under 13.
-            
-            6. DATA SECURITY
-            Game data is stored locally on your device. We implement security measures to protect any transmitted data.
-            
+            • Game data stays on your device
+            • Advertising data shared with Google AdMob for ad serving
+            • We do not sell your personal information
+
+            5. ADVERTISING & CHILDREN'S PRIVACY
+            • We comply with COPPA for users under 13
+            • Ads are family-friendly and age-appropriate
+            • You can control ad personalization in device settings
+            • Premium upgrade available to remove ads
+
+            6. YOUR CHOICES
+            • Reset Advertising ID in device settings
+            • Opt out of personalized ads
+            • Purchase premium upgrade for ad-free experience
+
             7. CONTACT US
-            Questions about this privacy policy? Contact us through the app store.
+            Developer: DeCoCo
+            For privacy questions, contact us through the app store.
+            Full policy: nancythomas2412.github.io/Flappie/privacy-policy.html
         """.trimIndent()
         
         val builder = android.app.AlertDialog.Builder(activity)
