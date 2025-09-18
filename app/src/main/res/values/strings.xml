@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Flappie</string>
+    <string name="game_description">A simple and elegant tap-to-fly game</string>
+</resources>
