@@ -21,10 +21,8 @@ class PrivacyManager(private val context: Context) {
         private const val KEY_AGE_VERIFIED = "age_verified"
         private const val KEY_IS_CHILD = "is_child"
         
-        // Privacy Policy URL - UPDATE THIS BEFORE RELEASE!
-        // See privacy-policy-hosting.md for setup instructions
-        // Current placeholder will show error - replace with your hosted URL
-        const val PRIVACY_POLICY_URL = "https://REPLACE-WITH-YOUR-ACTUAL-PRIVACY-POLICY-URL.com/privacy-policy.html"
+        // Privacy Policy URL - GitHub Pages hosted
+        const val PRIVACY_POLICY_URL = "https://nancythomas2412.github.io/Flappie/privacy-policy.html"
         
         // Example URLs after hosting:
         // GitHub Pages: "https://yourusername.github.io/flappie-privacy/privacy-policy.html"
