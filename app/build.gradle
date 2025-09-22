@@ -12,8 +12,8 @@ android {
         applicationId "com.flappie.game"
         minSdk 24
         targetSdk 35
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -77,7 +77,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Google Play Billing Library - Essential for monetization
-    implementation 'com.android.billingclient:billing:6.0.1'
+    implementation 'com.android.billingclient:billing:8.0.0'
     
     // Google Play Services (for future features like leaderboards)
     implementation 'com.google.android.gms:play-services-games:23.1.0'

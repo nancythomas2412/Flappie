@@ -87,3 +87,6 @@ fastlane/readme.md
 
 # OS specific files
 Thumbs.db
+
+# Claude Code session reports (local documentation only)
+CLAUDE_SESSION_REPORT.md
