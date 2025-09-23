@@ -55,15 +55,15 @@ object GameConstants {
     const val PIPE_CAP_HEIGHT = 30f
     const val PIPE_COLLISION_FORGIVENESS = 5f
     
-    // Pipe Spawn Timing Constants
+    // Pipe Spawn Timing Constants - Increased spacing for easier gameplay
     object PipeSpacing {
-        const val EASY = 220      // 0-15 points
-        const val NORMAL = 200    // 16-30 points
-        const val MEDIUM = 180    // 31-45 points
-        const val HARD = 160      // 46-60 points
-        const val HARDER = 140    // 61-80 points
-        const val HARDEST = 120   // 81-100 points
-        const val INSANE = 100    // 100+ points
+        const val EASY = 250      // 0-150 points (+30 frames)
+        const val NORMAL = 230    // 151-300 points (+30 frames)
+        const val MEDIUM = 210    // 301-600 points (+30 frames)
+        const val HARD = 190      // 601-900 points (+30 frames)
+        const val HARDER = 170    // 901-1200 points (+30 frames)
+        const val HARDEST = 150   // 1201-1500 points (+30 frames)
+        const val INSANE = 130    // 1500+ points (+30 frames)
     }
     
     // Collectibles Constants - Now density-aware

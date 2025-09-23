@@ -79,7 +79,7 @@ class SoundManager(private val context: Context) {
         }
     
     var musicVolume: Float
-        get() = prefs.getFloat(KEY_MUSIC_VOLUME, 0.128f)
+        get() = prefs.getFloat(KEY_MUSIC_VOLUME, 0.115f) // Reduced from 0.128f by 10%
         set(value) {
             val clampedValue = value.coerceIn(0f, 1f)
             prefs.edit { putFloat(KEY_MUSIC_VOLUME, clampedValue) }
@@ -165,9 +165,10 @@ class SoundManager(private val context: Context) {
                 // Boost volume for critical gameplay sounds, reduce for UI
                 val effectiveVolume = when (soundType) {
                     SoundType.JUMP -> 1.0f // 100% volume for jump (maximum)
-                    SoundType.SCORE -> 0.70f // 70% volume for score
-                    SoundType.UI_CLICK -> soundVolume * 0.6f // 40% reduction for UI interactions
-                    else -> soundVolume
+                    SoundType.SCORE -> 0.63f // 63% volume for score (reduced by 10%)
+                    SoundType.UI_CLICK -> soundVolume * 0.54f // 46% reduction for UI interactions (reduced by 10%)
+                    SoundType.POWERUP -> soundVolume * 0.65f // 65% volume for powerup sounds
+                    else -> soundVolume * 0.9f // 90% of user setting for other sounds (reduced by 10%)
                 }
 
                 val streamId = pool.play(

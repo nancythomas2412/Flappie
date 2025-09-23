@@ -89,18 +89,23 @@ class Bird(
 
 
     /**
-     * Update bird physics and animation
+     * Update bird physics and animation with frame-rate independent physics
+     * @param deltaTime Time elapsed since last frame in seconds
      */
-    fun update() {
-        // Apply gravity
-        velocityY += gravity
+    fun update(deltaTime: Float = 1f/60f) {
+        // Frame-rate independent physics - scale by delta time and target FPS
+        val frameRate = 60f // Target FPS
+        val physicsMultiplier = deltaTime * frameRate
+
+        // Apply gravity (frame-rate independent)
+        velocityY += gravity * physicsMultiplier
 
         if (velocityY > maxVelocity) {
             velocityY = maxVelocity
         }
 
-        // Update position
-        y += velocityY
+        // Update position (frame-rate independent)
+        y += velocityY * physicsMultiplier
 
         // Update animation through animator
         birdAnimator.update(velocityY)
@@ -108,6 +113,11 @@ class Bird(
         // Update trail effect
         updateTrail()
     }
+
+    /**
+     * Legacy update method for compatibility
+     */
+    fun update() = update(1f/60f)
 
     /**
      * Make bird jump

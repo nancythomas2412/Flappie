@@ -8,10 +8,16 @@ import android.graphics.Canvas
  */
 interface GameUpdatable {
     /**
-     * Update game logic
+     * Update game logic with delta time for frame-rate independent physics
+     * @param deltaTime Time elapsed since last frame in seconds
      */
-    fun update()
-    
+    fun update(deltaTime: Float = 1f/60f)
+
+    /**
+     * Legacy update method for compatibility
+     */
+    fun update() = update(1f/60f)
+
     /**
      * Draw the game to canvas
      */

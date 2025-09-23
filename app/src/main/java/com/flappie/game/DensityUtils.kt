@@ -92,8 +92,8 @@ object DensityUtils {
     object GameElements {
         fun getBirdRadius(): Float = dp(35f) // Decreased further for better gameplay
         fun getBirdCollisionRadius(): Float = dp(26f) // Proportional to bird radius
-        fun getBirdGravity(): Float = 0.8f // Original 1.0.0 physics - NOT scaled
-        fun getBirdJump(): Float = -18f // Original 1.0.0 jump strength - NOT scaled
+        fun getBirdGravity(): Float = 0.5f // Further reduced for easier bird control
+        fun getBirdJump(): Float = -16f // Reduced jump strength for gentler control
         fun getBirdMaxVelocity(): Float = 15f // Original 1.0.0 max velocity - NOT scaled
 
         fun getPowerUpSize(): Float = dp(49.5f) // Increased by 10% for better visibility

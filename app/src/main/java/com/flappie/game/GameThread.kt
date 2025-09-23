@@ -19,6 +19,10 @@ class GameThread(
     private val targetFPS = GameConstants.TARGET_FPS
     private val targetTime = GameConstants.TARGET_FRAME_TIME
 
+    // Frame timing for frame-rate independent physics
+    private var lastFrameTime = System.currentTimeMillis()
+    private var deltaTime = 0f
+
     /**
      * Set whether the thread should continue running
      */
@@ -41,14 +45,19 @@ class GameThread(
             val startTime = System.currentTimeMillis()
             canvas = null
 
+            // Calculate delta time for frame-rate independent physics
+            deltaTime = (startTime - lastFrameTime) / 1000f
+            deltaTime = deltaTime.coerceIn(0f, 0.05f) // Cap at 50ms to prevent large jumps
+            lastFrameTime = startTime
+
             try {
                 // Lock the canvas for drawing
                 canvas = surfaceHolder.lockCanvas()
 
                 if (canvas != null) {
                     synchronized(surfaceHolder) {
-                        // Update game logic
-                        gameView.update()
+                        // Update game logic with delta time
+                        gameView.update(deltaTime)
 
                         // Draw everything to canvas
                         gameView.draw(canvas)

@@ -37,12 +37,13 @@
 
     <!-- Optional: Version info at bottom -->
     <TextView
+        android:id="@+id/version_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        android:text="Flappie v1.0.0"
+        android:text="Flappie v1.0.4"
         android:textSize="12sp"
         android:textColor="@color/splash_text_secondary"
         android:alpha="0.7" />

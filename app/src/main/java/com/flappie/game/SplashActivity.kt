@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -29,10 +30,27 @@ class SplashActivity : AppCompatActivity() {
         // Set the splash screen layout
         setContentView(R.layout.activity_splash)
 
+        // Set dynamic version from app info
+        setVersionText()
+
         // Automatically transition to MainActivity after duration
         Handler(Looper.getMainLooper()).postDelayed({
             startMainActivity()
         }, SPLASH_DURATION)
+    }
+
+    /**
+     * Set dynamic version text from app info
+     */
+    private fun setVersionText() {
+        try {
+            val versionText = findViewById<TextView>(R.id.version_text)
+            val packageInfo = packageManager.getPackageInfo(packageName, 0)
+            versionText.text = "Flappie v${packageInfo.versionName}"
+        } catch (e: Exception) {
+            // Fallback if version reading fails
+            findViewById<TextView>(R.id.version_text).text = "Flappie"
+        }
     }
 
     /**
@@ -68,8 +86,4 @@ class SplashActivity : AppCompatActivity() {
         finish() // Remove splash from back stack
     }
 
-    override fun onBackPressed() {
-        // Disable back button during splash screen
-        // Do nothing - let splash complete naturally
-    }
 }

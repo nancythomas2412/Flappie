@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.flappie.game'
+    namespace = 'com.flappie.game'
     compileSdk 35
 
     defaultConfig {
@@ -38,14 +38,14 @@ android {
             // applicationIdSuffix ".debug"  // Removed to fix MainActivity not found error
             debuggable true
             minifyEnabled false
-            signingConfig signingConfigs.debug
+            signingConfig = signingConfigs.debug
         }
         
         release {
             minifyEnabled true
-            shrinkResources true
+            shrinkResources = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            signingConfig = signingConfigs.release
             debuggable false
             
             // Optimize for Play Store
@@ -73,7 +73,7 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.google.android.material:material:1.13.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
     // Google Play Billing Library - Essential for monetization

@@ -75,8 +75,11 @@ class Pipe(
     /**
      * Update pipe position with global speed
      */
-    fun update(globalPipeSpeed: Float) {
-        x -= globalPipeSpeed
+    fun update(globalPipeSpeed: Float, deltaTime: Float = 1f/60f) {
+        // Frame-rate independent movement
+        val frameRate = 60f
+        val physicsMultiplier = deltaTime * frameRate
+        x -= globalPipeSpeed * physicsMultiplier
     }
 
     /**

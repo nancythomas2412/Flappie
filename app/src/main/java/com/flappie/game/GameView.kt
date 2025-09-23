@@ -132,6 +132,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     private val pipes = ArrayList<Pipe>()
     private val powerUps = ArrayList<PowerUp>()
     private val coins = ArrayList<Coin>()
+
+    // Object pools for garbage collection optimization
+    private val pipesToRemove = ArrayList<Pipe>()
+    private val powerUpsToRemove = ArrayList<PowerUp>()
+    private val coinsToRemove = ArrayList<Coin>()
     
     // Spawn timers
     private var pipeSpawnTimer = 0
@@ -572,13 +577,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             }
             is TouchCommand.BuyLifePremium -> {
                 val config = gameConfigManager.getCurrentConfig()
-                if (config.playerLives < 3) {
+                if (config.playerLives == 0) {
                     soundManager.playSound(SoundManager.SoundType.UI_CLICK)
 
                     // Use BillingManager to handle the premium purchase
                     billingManager?.purchaseProduct(context as Activity, BillingManager.EXTRA_LIFE_PREMIUM)
                 } else {
-                    // Already at max lives
+                    // Not at 0 lives - premium only available when completely out
                     soundManager.playSound(SoundManager.SoundType.LOSE_LIFE)
                 }
             }
@@ -768,14 +773,14 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     
     /**
-     * Main game update method
+     * Main game update method with delta time for frame-rate independent physics
      */
-    override fun update() {
-        if (gamePaused || showTutorial || showPauseMenu || showSettings || showShop || 
+    override fun update(deltaTime: Float) {
+        if (gamePaused || showTutorial || showPauseMenu || showSettings || showShop ||
             showAchievements || showStatistics || showBirdSkins) return
-        
+
         when (gameState) {
-            GameState.PLAYING -> updateGameplay()
+            GameState.PLAYING -> updateGameplay(deltaTime)
             else -> {
                 // Update power-up timers even in menu states to prevent stuck effects
                 updatePowerUpTimers()
@@ -786,15 +791,15 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     /**
      * Update gameplay logic
      */
-    private fun updateGameplay() {
-        // Update bird
-        bird.update()
+    private fun updateGameplay(deltaTime: Float = 1f/60f) {
+        // Update bird with delta time for frame-rate independent physics
+        bird.update(deltaTime)
         birdAnimator.update(bird.velocityY)
         
         // Update game objects
-        updatePipes()
+        updatePipes(deltaTime)
         updateCollectibleSpawning()
-        updateCollectibles()
+        updateCollectibles(deltaTime)
         updatePowerUpTimers()
         
         // Update invulnerability timer
@@ -827,7 +832,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     /**
      * Update pipes with slow motion consideration and consistent global speed
      */
-    private fun updatePipes() {
+    private fun updatePipes(deltaTime: Float = 1f/60f) {
         if (!powerUpStates.slowMotionActive || Random.nextFloat() < 0.5f) {
             val currentSpawnDelay = calculatePipeSpacing(score)
 
@@ -840,9 +845,9 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             // Calculate global pipe speed based on current score
             val globalPipeSpeed = calculateGlobalPipeSpeed(score)
 
-            val pipesToRemove = ArrayList<Pipe>()
+            pipesToRemove.clear() // Reuse pooled list instead of creating new one
             for (pipe in pipes) {
-                pipe.update(globalPipeSpeed) // All pipes use same speed
+                pipe.update(globalPipeSpeed, deltaTime) // All pipes use same speed with delta time
 
                 if (pipe.isOffScreen()) {
                     pipesToRemove.add(pipe)
@@ -885,29 +890,35 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     
     /**
      * Calculate pipe spawn spacing based on score
+     * Updated for much gentler progression
      */
     private fun calculatePipeSpacing(score: Int): Int {
         return when {
-            score <= 15 -> GameConstants.PipeSpacing.EASY
-            score <= 30 -> GameConstants.PipeSpacing.NORMAL
-            score <= 45 -> GameConstants.PipeSpacing.MEDIUM
-            score <= 60 -> GameConstants.PipeSpacing.HARD
-            score <= 80 -> GameConstants.PipeSpacing.HARDER
-            score <= 100 -> GameConstants.PipeSpacing.HARDEST
-            else -> GameConstants.PipeSpacing.INSANE
+            score <= 150 -> GameConstants.PipeSpacing.EASY     // Extended easy period
+            score <= 300 -> GameConstants.PipeSpacing.NORMAL   // Extended normal period
+            score <= 600 -> GameConstants.PipeSpacing.MEDIUM   // Extended medium period
+            score <= 900 -> GameConstants.PipeSpacing.HARD     // Extended hard period
+            score <= 1200 -> GameConstants.PipeSpacing.HARDER  // Extended harder period
+            score <= 1500 -> GameConstants.PipeSpacing.HARDEST // Extended hardest period
+            else -> GameConstants.PipeSpacing.INSANE           // Only at very high scores
         }
     }
 
     /**
      * Calculate global pipe speed that all pipes use (prevents spacing changes)
+     * Custom progression: slower start, gradual increase, lower max speed
      */
     private fun calculateGlobalPipeSpeed(score: Int): Float {
-        val baseSpeed = GameConstants.PIPE_BASE_SPEED
-        val maxSpeed = GameConstants.PIPE_MAX_SPEED
-        val speedIncrease = GameConstants.PIPE_SPEED_INCREASE
-
-        val increase = (score / GameConstants.PIPE_SCORE_INTERVAL) * speedIncrease
-        return maxSpeed.coerceAtMost(baseSpeed + increase)
+        return when {
+            score <= 100 -> 0.95f    // Score 0-100: slightly slower start
+            score <= 299 -> 1.1f     // Score 101-299: slightly faster
+            else -> {
+                // Score 300+: increase by 0.1f every 150 points, max 5.2f
+                val adjustedScore = score - 300
+                val increase = (adjustedScore / 150) * 0.1f
+                5.2f.coerceAtMost(1.1f + increase)
+            }
+        }
     }
     
     /**
@@ -1007,16 +1018,17 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     /**
      * Update all collectibles
      */
-    private fun updateCollectibles() {
+    private fun updateCollectibles(@Suppress("UNUSED_PARAMETER") deltaTime: Float = 1f/60f) {
         updatePowerUps()
         updateCoins()
+        // deltaTime available for future collectible movement features
     }
     
     /**
      * Update power-ups
      */
     private fun updatePowerUps() {
-        val powerUpsToRemove = ArrayList<PowerUp>()
+        powerUpsToRemove.clear() // Reuse pooled list instead of creating new one
         for (powerUp in powerUps) {
             powerUp.update(bird.x, bird.y, powerUpStates.magnetActive)
             
@@ -1052,7 +1064,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
      * Update coins
      */
     private fun updateCoins() {
-        val coinsToRemove = ArrayList<Coin>()
+        coinsToRemove.clear() // Reuse pooled list instead of creating new one
         for (coin in coins) {
             coin.update(bird.x, bird.y, powerUpStates.magnetActive)
             

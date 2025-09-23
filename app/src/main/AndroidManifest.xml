@@ -32,7 +32,7 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
+            android:resizeableActivity="true"
             android:theme="@style/Theme.Flappie.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
+            android:resizeableActivity="true"
             android:theme="@style/Theme.Flappie.Fullscreen" />
     </application>
 </manifest>

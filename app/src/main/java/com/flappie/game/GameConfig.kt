@@ -306,7 +306,17 @@ class GameConfigManager(private val context: Context) {
         val oldLives = currentConfig.playerLives
         currentConfig = currentConfig.withLives(lives)
         GameConfig.save(context, currentConfig)
-        android.util.Log.d("HeartSystem", "Set lives: $oldLives -> $lives")
+
+        // Integrate with heart refill timer when lives change
+        if (lives < GameConstants.MAX_LIVES) {
+            // Start/restart timer for remaining hearts
+            heartRefillManager.startRefillTimer(lives)
+        } else {
+            // Hearts are full, no timer needed
+            heartRefillManager.resetRefillTimer()
+        }
+
+        android.util.Log.d("HeartSystem", "Set lives: $oldLives -> $lives, timer updated")
     }
 
     /**

@@ -148,19 +148,19 @@ class HUDRenderer(
      */
     fun drawUIButtons(canvas: Canvas, buttonAreas: ButtonAreas, buttonPaint: Paint, buttonTextPaint: Paint, showPauseButton: Boolean = true, showExitButton: Boolean = false, showHomeButton: Boolean = false, isMenuScreen: Boolean = false) {
         // Create gradient and enhanced styling for all screens
-        val primaryColor = if (isMenuScreen) Color.parseColor("#2196F3") else Color.parseColor("#1976D2") // Blue gradient
+        val primaryColor = if (isMenuScreen) "#2196F3".toColorInt() else "#1976D2".toColorInt() // Blue gradient
         @Suppress("UNUSED_VARIABLE")
-        val secondaryColor = if (isMenuScreen) Color.parseColor("#1976D2") else Color.parseColor("#1565C0") // Darker blue
+        val secondaryColor = if (isMenuScreen) "#1976D2".toColorInt() else "#1565C0".toColorInt() // Darker blue
         
         val enhancedButtonPaint = Paint(buttonPaint).apply {
             color = primaryColor
             style = Paint.Style.FILL
-            setShadowLayer(10f, 3f, 3f, Color.parseColor("#40000000")) // Consistent shadow for all screens
+            setShadowLayer(10f, 3f, 3f, "#40000000".toColorInt()) // Consistent shadow for all screens
         }
         
         // Border paint for elegant outline
         val borderPaint = Paint().apply {
-            color = Color.parseColor("#0D47A1") // Dark blue border
+            color = "#0D47A1".toColorInt() // Dark blue border
             style = Paint.Style.STROKE
             strokeWidth = if (isMenuScreen) 4f else 3f
             isAntiAlias = true
@@ -170,7 +170,7 @@ class HUDRenderer(
             color = Color.WHITE // Always white text for consistency
             textSize = if (isMenuScreen) GameConstants.LARGE_TEXT_SIZE * 0.8f else GameConstants.MEDIUM_TEXT_SIZE * 1.1f
             typeface = Typeface.DEFAULT_BOLD
-            setShadowLayer(3f, 1f, 1f, Color.parseColor("#80000000")) // Text shadow for all screens
+            setShadowLayer(3f, 1f, 1f, "#80000000".toColorInt()) // Text shadow for all screens
             isAntiAlias = true
         }
         
