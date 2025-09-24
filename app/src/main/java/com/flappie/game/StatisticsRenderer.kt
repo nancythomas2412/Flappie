@@ -105,8 +105,8 @@ class StatisticsRenderer(
         canvas.drawColor(overlayPaint.color)
         
         // Main panel
-        val panelWidth = screenWidth * 0.95f
-        val panelHeight = screenHeight * 0.9f
+        val panelWidth = DensityUtils.UI.getMaxPanelWidth()
+        val panelHeight = DensityUtils.UI.getMaxPanelHeight()
         val panelX = (screenWidth - panelWidth) / 2f
         val panelY = (screenHeight - panelHeight) / 2f
         

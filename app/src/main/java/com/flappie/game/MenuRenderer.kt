@@ -66,8 +66,8 @@ class MenuRenderer(
      * Draw hearts in menu screen (same position as in gameplay) with optional timer
      */
     private fun drawMenuHearts(canvas: Canvas, currentLives: Int, maxLives: Int, heartSprites: HeartSprites?, heartRefillTime: String? = null) {
-        val heartSize = screenWidth * GameConstants.HEART_SIZE_RATIO
-        val heartSpacing = screenWidth * GameConstants.HEART_SPACING_RATIO
+        val heartSize = DensityUtils.UI.getHeartSize()
+        val heartSpacing = DensityUtils.UI.getHeartSpacing()
         val heartX = GameConstants.HEART_MARGIN_X + heartSize / 2f
         val heartY = GameConstants.HEART_MARGIN_Y + heartSize / 2f
 
@@ -104,7 +104,7 @@ class MenuRenderer(
     private fun drawHeartRefillTimer(canvas: Canvas, heartRefillTime: String) {
         // Position timer 35% from right edge
         val timerX = screenWidth - (screenWidth * 0.35f)  // 35% from right edge
-        val timerY = GameConstants.HEART_MARGIN_Y + (screenWidth * GameConstants.HEART_SIZE_RATIO) / 2f  // Same height as hearts
+        val timerY = GameConstants.HEART_MARGIN_Y + DensityUtils.UI.getHeartSize() / 2f  // Same height as hearts
 
         // Heart icon for the timer (increased size)
         val timerHeartSize = screenWidth * 0.07f // Increased from 0.06f for better visibility

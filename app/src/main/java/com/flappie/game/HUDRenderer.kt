@@ -44,8 +44,8 @@ class HUDRenderer(
      * Draw lives using heart sprites or fallback shapes
      */
     fun drawLives(canvas: Canvas, playerLives: Int, maxLives: Int, heartSprites: HeartSprites) {
-        val heartSize = screenWidth * GameConstants.HEART_SIZE_RATIO
-        val heartSpacing = screenWidth * GameConstants.HEART_SPACING_RATIO
+        val heartSize = DensityUtils.UI.getHeartSize()
+        val heartSpacing = DensityUtils.UI.getHeartSpacing()
         
         for (i in 0 until maxLives) {
             val heartX = GameConstants.HEART_MARGIN_X + (i * heartSpacing)
@@ -88,7 +88,7 @@ class HUDRenderer(
      * Draw coin counter at top right
      */
     fun drawCoinCounter(canvas: Canvas, totalCoins: Int) {
-        canvas.drawText("💰 $totalCoins", screenWidth - 30f, 160f, coinPaint)
+        canvas.drawText("💰 $totalCoins", screenWidth - DensityUtils.UI.getCoinsMargin(), 160f, coinPaint)
     }
     
     /**
@@ -97,11 +97,11 @@ class HUDRenderer(
     fun drawPowerUpIndicators(canvas: Canvas, powerUpStates: PowerUpStates, birdX: Float = 0f, birdY: Float = 0f) {
         // Position indicators near the bird's tail (behind the bird)
         val baseIndicatorX = if (birdX > 0) birdX - 120f else 50f // Behind bird or fallback to left side
-        var indicatorY = if (birdY > 0) birdY - 20f else screenHeight - 180f // Above bird or fallback position
+        var indicatorY = if (birdY > 0) birdY - 20f else screenHeight - DensityUtils.UI.getHUDMargin() * 3f // Above bird or fallback position
         
         // Ensure indicators stay within screen bounds
-        val indicatorX = maxOf(10f, minOf(baseIndicatorX, screenWidth - 150f))
-        indicatorY = maxOf(50f, minOf(indicatorY, screenHeight - 50f))
+        val indicatorX = maxOf(DensityUtils.UI.getCoinsMargin(), minOf(baseIndicatorX, screenWidth - DensityUtils.UI.getIndicatorBounds() * 3f))
+        indicatorY = maxOf(DensityUtils.UI.getIndicatorBounds(), minOf(indicatorY, screenHeight - DensityUtils.UI.getIndicatorBounds()))
         
         if (powerUpStates.shieldActive) {
             canvas.drawText(

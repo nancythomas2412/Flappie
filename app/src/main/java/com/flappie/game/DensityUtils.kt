@@ -109,6 +109,21 @@ object DensityUtils {
 
         fun getStrokeWidth(): Float = scale(2f) // Base 2dp
         fun getStrokeWidthThick(): Float = scale(4f) // Base 4dp
+
+        // Heart sizing - responsive instead of screen percentage based
+        fun getHeartSize(): Float = dp(36f) // Base 36dp with smart scaling
+        fun getHeartSpacing(): Float = dp(42f) // Base 42dp spacing
+
+        // Panel sizing - responsive with aspect ratio limits
+        fun getMaxPanelWidth(): Float = kotlin.math.min(screenWidth * 0.95f, dp(800f))
+        fun getMaxPanelHeight(): Float = kotlin.math.min(screenHeight * 0.90f, dp(720f))
+        fun getMediumPanelWidth(): Float = kotlin.math.min(screenWidth * 0.88f, dp(700f))
+        fun getNotificationWidth(): Float = kotlin.math.min(screenWidth * 0.8f, dp(600f))
+
+        // HUD margins - responsive instead of fixed pixels
+        fun getHUDMargin(): Float = scale(60f) // Base 60dp margin
+        fun getIndicatorBounds(): Float = scale(50f) // Base 50dp bounds
+        fun getCoinsMargin(): Float = scale(10f) // Base 10dp margin
     }
 
     /**

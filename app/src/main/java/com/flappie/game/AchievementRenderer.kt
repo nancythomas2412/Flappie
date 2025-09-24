@@ -258,7 +258,7 @@ class AchievementRenderer(
         if (animationProgress <= 0f) return
         
         val centerX = screenWidth / 2f
-        val notificationWidth = screenWidth * 0.8f
+        val notificationWidth = DensityUtils.UI.getNotificationWidth()
         val notificationHeight = 120f
         
         // Slide in from top
