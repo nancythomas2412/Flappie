@@ -243,8 +243,10 @@ class AnimationManager {
                 val progress = elapsed.toFloat() / particle.lifetime.toFloat()
                 particle.alpha = 255f * (1f - progress) // Fade out
                 
-                val currentX = particle.x + particle.velocityX * elapsed / 16.67f // 60fps compensation
-                val currentY = particle.y + particle.velocityY * elapsed / 16.67f + 0.1f * elapsed * elapsed / (16.67f * 16.67f) // Gravity
+                // Frame rate independent particle movement
+                val timeScale = elapsed / 1000f // Convert milliseconds to seconds
+                val currentX = particle.x + particle.velocityX * timeScale
+                val currentY = particle.y + particle.velocityY * timeScale + 0.1f * timeScale * timeScale // Gravity
                 
                 // Draw particle
                 particlePaint.color = particle.color
@@ -274,7 +276,9 @@ class AnimationManager {
                 // Update text position
                 val progress = elapsed.toFloat() / floatingText.lifetime.toFloat()
                 floatingText.alpha = 255f * (1f - progress) // Fade out
-                floatingText.currentY = floatingText.startY + floatingText.velocityY * elapsed / 16.67f
+                // Frame rate independent floating text movement
+                val timeScale = elapsed / 1000f // Convert milliseconds to seconds
+                floatingText.currentY = floatingText.startY + floatingText.velocityY * timeScale
                 
                 // Apply easing for smooth movement
                 val easedProgress = easeOut(progress)

@@ -86,7 +86,12 @@ object GameConstants {
         const val EXTRA_LIFE = 0
     }
     
-    // Spawn Timing Constants
+    // Spawn Timing Constants - Frame rate independent
+    const val POWERUP_SPAWN_MIN_SECONDS = 60f  // 60 seconds
+    const val POWERUP_SPAWN_MAX_SECONDS = 90f  // 90 seconds
+    const val COIN_SPAWN_DELAY_SECONDS = 15f   // 15 seconds
+
+    // Legacy frame-based constants (deprecated - kept for compatibility)
     const val POWERUP_SPAWN_MIN = 3600  // 60 seconds at 60fps
     const val POWERUP_SPAWN_MAX = 5401  // 90 seconds at 60fps
     const val COIN_SPAWN_DELAY = 900    // 15 seconds at 60fps

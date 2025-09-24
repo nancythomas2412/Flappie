@@ -138,14 +138,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     private val powerUpsToRemove = ArrayList<PowerUp>()
     private val coinsToRemove = ArrayList<Coin>()
     
-    // Spawn timers
+    // Spawn timers - Time-based instead of frame-based
     private var pipeSpawnTimer = 0
-    private var powerUpSpawnTimer = 0
-    private var coinSpawnTimer = 0
-    private var powerUpSpawnDelay = Random.nextInt(
-        GameConstants.POWERUP_SPAWN_MIN, 
-        GameConstants.POWERUP_SPAWN_MAX + 1
-    )
+    private var powerUpSpawnTimer = 0f // Changed to float for time accumulation
+    private var coinSpawnTimer = 0f    // Changed to float for time accumulation
+    private var powerUpSpawnDelay = Random.nextFloat() *
+        (GameConstants.POWERUP_SPAWN_MAX_SECONDS - GameConstants.POWERUP_SPAWN_MIN_SECONDS) +
+        GameConstants.POWERUP_SPAWN_MIN_SECONDS // Random between 60-90 seconds
     
     // Loaded resources
     private var birdSprites: BirdSprites? = null
@@ -181,13 +180,13 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     // Tutorial state
     private var currentTutorialStep = 0
     private val tutorialSteps = TutorialSteps.getAllSteps()
-    private var tutorialAnimationTimer = 0
-    private val tutorialAnimationDuration = 30 // 0.5 seconds at 60fps
+    private var tutorialAnimationTimer = 0f
+    private val tutorialAnimationDuration = 0.5f // 0.5 seconds (frame rate independent)
     
     // Achievement notification
     private var achievementNotification: Achievement? = null
-    private var notificationTimer = 0
-    private val notificationDuration = 180 // 3 seconds at 60fps
+    private var notificationTimer = 0f
+    private val notificationDuration = 3.0f // 3 seconds (frame rate independent)
     
     // Game session tracking
     private var gameStartTime = 0L
@@ -535,7 +534,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
                 if (showTutorial) {
                     soundManager.playSound(SoundManager.SoundType.UI_CLICK)
                     currentTutorialStep++
-                    tutorialAnimationTimer = 0
+                    tutorialAnimationTimer = 0f
                     
                     if (currentTutorialStep >= tutorialSteps.size) {
                         // Tutorial completed
@@ -728,8 +727,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         coins.clear()
         
         pipeSpawnTimer = 0
-        powerUpSpawnTimer = 0
-        coinSpawnTimer = 0
+        powerUpSpawnTimer = 0f
+        coinSpawnTimer = 0f
         
         resetPowerUpStates()
     }
@@ -755,8 +754,8 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         coins.clear()
         
         pipeSpawnTimer = 0
-        powerUpSpawnTimer = 0
-        coinSpawnTimer = 0
+        powerUpSpawnTimer = 0f
+        coinSpawnTimer = 0f
         
         resetPowerUpStates()
     }
@@ -798,7 +797,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         
         // Update game objects
         updatePipes(deltaTime)
-        updateCollectibleSpawning()
+        updateCollectibleSpawning(deltaTime)
         updateCollectibles(deltaTime)
         updatePowerUpTimers()
         
@@ -813,16 +812,16 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         }
         
         // Update achievement notification timer
-        if (notificationTimer > 0) {
-            notificationTimer--
-            if (notificationTimer == 0) {
+        if (notificationTimer > 0f) {
+            notificationTimer -= deltaTime
+            if (notificationTimer <= 0f) {
                 achievementNotification = null
             }
         }
         
         // Update tutorial animation
         if (showTutorial && tutorialAnimationTimer < tutorialAnimationDuration) {
-            tutorialAnimationTimer++
+            tutorialAnimationTimer += deltaTime
         }
         
         // Check collisions
@@ -921,18 +920,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
     }
     
     /**
-     * Update collectible spawning
+     * Update collectible spawning with frame rate independence
      */
-    private fun updateCollectibleSpawning() {
-        // Power-up spawning
-        powerUpSpawnTimer++
+    private fun updateCollectibleSpawning(deltaTime: Float) {
+        // Power-up spawning - accumulate time instead of counting frames
+        powerUpSpawnTimer += deltaTime
         if (powerUpSpawnTimer >= powerUpSpawnDelay && score >= GameConstants.COLLECTIBLE_SPAWN_SCORE_THRESHOLD) {
             spawnPowerUp()
         }
-        
-        // Coin spawning
-        coinSpawnTimer++
-        if (coinSpawnTimer >= GameConstants.COIN_SPAWN_DELAY && score >= GameConstants.COLLECTIBLE_SPAWN_SCORE_THRESHOLD) {
+
+        // Coin spawning - accumulate time instead of counting frames
+        coinSpawnTimer += deltaTime
+        if (coinSpawnTimer >= GameConstants.COIN_SPAWN_DELAY_SECONDS && score >= GameConstants.COLLECTIBLE_SPAWN_SCORE_THRESHOLD) {
             spawnCoins()
         }
     }
@@ -963,11 +962,11 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         val spawnY = Random.nextInt(screenHeight / 4, (screenHeight * 0.75f).toInt()).toFloat()
         powerUps.add(PowerUp(screenWidth.toFloat() + 100f, spawnY, randomType, sprite))
         
-        powerUpSpawnDelay = Random.nextInt(
-            GameConstants.POWERUP_SPAWN_MIN,
-            GameConstants.POWERUP_SPAWN_MAX + 1
-        )
-        powerUpSpawnTimer = 0
+        // Reset spawn delay with time-based randomization
+        powerUpSpawnDelay = Random.nextFloat() *
+            (GameConstants.POWERUP_SPAWN_MAX_SECONDS - GameConstants.POWERUP_SPAWN_MIN_SECONDS) +
+            GameConstants.POWERUP_SPAWN_MIN_SECONDS // Random between 60-90 seconds
+        powerUpSpawnTimer = 0f
     }
     
     /**
@@ -1011,7 +1010,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             coins.add(Coin(screenWidth.toFloat() + 100f, coinY, coinType, sprite))
         }
         
-        coinSpawnTimer = 0
+        coinSpawnTimer = 0f
     }
     
     /**
@@ -1401,7 +1400,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
             val currentStep = tutorialSteps.getOrNull(currentTutorialStep)
             currentStep?.let { step ->
                 val animationProgress = if (tutorialAnimationTimer < tutorialAnimationDuration) {
-                    tutorialAnimationTimer.toFloat() / tutorialAnimationDuration.toFloat()
+                    tutorialAnimationTimer / tutorialAnimationDuration
                 } else {
                     1.0f
                 }
@@ -1411,7 +1410,7 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
         
         // Draw achievement notification if active
         achievementNotification?.let { notification ->
-            val progress = 1.0f - (notificationTimer.toFloat() / notificationDuration.toFloat())
+            val progress = 1.0f - (notificationTimer / notificationDuration)
             achievementRenderer.drawAchievementNotification(canvas, notification, progress)
         }
     }
