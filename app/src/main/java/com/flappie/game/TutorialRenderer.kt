@@ -30,7 +30,7 @@ class TutorialRenderer(
     // Title text
     private val titlePaint = Paint().apply {
         color = "#2C3E50".toColorInt() // Dark text on white background
-        textSize = GameConstants.MEDIUM_TEXT_SIZE  // Elderly-friendly size
+        textSize = DensityUtils.UI.getTextMedium()  // Elderly-friendly size
         typeface = Typeface.DEFAULT_BOLD
         textAlign = Paint.Align.CENTER
         isAntiAlias = true
@@ -39,7 +39,7 @@ class TutorialRenderer(
     // Instruction text
     private val instructionPaint = Paint().apply {
         color = "#34495E".toColorInt() // Dark gray text for readability
-        textSize = GameConstants.SMALL_TEXT_SIZE   // Elderly-friendly size
+        textSize = DensityUtils.UI.getTextSmall()   // Elderly-friendly size
         textAlign = Paint.Align.LEFT // Left align content
         typeface = Typeface.DEFAULT
         isAntiAlias = true
@@ -48,7 +48,7 @@ class TutorialRenderer(
     // Continue prompt
     private val promptPaint = Paint().apply {
         color = "#3498DB".toColorInt() // Blue text
-        textSize = GameConstants.SMALL_TEXT_SIZE   // Elderly-friendly size
+        textSize = DensityUtils.UI.getTextSmall()   // Elderly-friendly size
         typeface = Typeface.DEFAULT_BOLD
         textAlign = Paint.Align.CENTER
         isAntiAlias = true
@@ -85,7 +85,7 @@ class TutorialRenderer(
     
     private val skipTextPaint = Paint().apply {
         color = Color.WHITE
-        textSize = GameConstants.TINY_TEXT_SIZE   // Elderly-friendly size
+        textSize = DensityUtils.UI.getTextSmall()   // Elderly-friendly size
         typeface = Typeface.DEFAULT_BOLD
         textAlign = Paint.Align.CENTER
         isAntiAlias = true
@@ -192,7 +192,7 @@ class TutorialRenderer(
         val progressText = "$current / $total"
         val textPaint = Paint().apply {
             color = "#7F8C8D".toColorInt()
-            textSize = GameConstants.TINY_TEXT_SIZE   // Elderly-friendly size
+            textSize = DensityUtils.UI.getTextSmall()   // Elderly-friendly size
             typeface = Typeface.DEFAULT
             textAlign = Paint.Align.CENTER
             isAntiAlias = true
@@ -340,7 +340,7 @@ class TutorialRenderer(
         
         val logoPaint = Paint().apply {
             color = Color.WHITE
-            textSize = GameConstants.LARGE_TEXT_SIZE  // Elderly-friendly size
+            textSize = DensityUtils.UI.getTextTitle()  // Elderly-friendly size
             typeface = Typeface.DEFAULT_BOLD
             textAlign = Paint.Align.CENTER
             isAntiAlias = true
@@ -353,7 +353,7 @@ class TutorialRenderer(
         // Welcome text
         val welcomePaint = Paint().apply {
             color = Color.WHITE
-            textSize = GameConstants.SMALL_TEXT_SIZE  // Elderly-friendly size
+            textSize = DensityUtils.UI.getTextSmall()  // Elderly-friendly size
             typeface = Typeface.DEFAULT
             textAlign = Paint.Align.CENTER
             isAntiAlias = true

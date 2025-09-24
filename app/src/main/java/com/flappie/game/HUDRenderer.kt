@@ -21,7 +21,7 @@ class HUDRenderer(
     
     private val indicatorPaint = Paint().apply {
         color = Color.WHITE
-        textSize = GameConstants.TINY_TEXT_SIZE
+        textSize = DensityUtils.UI.getTextSmall()
         typeface = Typeface.DEFAULT_BOLD
         textAlign = Paint.Align.LEFT
         isAntiAlias = true
@@ -168,7 +168,7 @@ class HUDRenderer(
         
         val enhancedButtonTextPaint = Paint(buttonTextPaint).apply {
             color = Color.WHITE // Always white text for consistency
-            textSize = if (isMenuScreen) GameConstants.LARGE_TEXT_SIZE * 0.8f else GameConstants.MEDIUM_TEXT_SIZE * 1.1f
+            textSize = if (isMenuScreen) DensityUtils.UI.getTextLarge() else DensityUtils.UI.getTextMedium()
             typeface = Typeface.DEFAULT_BOLD
             setShadowLayer(3f, 1f, 1f, "#80000000".toColorInt()) // Text shadow for all screens
             isAntiAlias = true

@@ -29,7 +29,7 @@ class UIRenderer(
     
     private val textPaint = Paint().apply {
         color = Color.WHITE
-        textSize = GameConstants.LARGE_TEXT_SIZE
+        textSize = DensityUtils.UI.getTextTitle()
         typeface = Typeface.DEFAULT_BOLD
         textAlign = Paint.Align.CENTER
         isAntiAlias = true
@@ -37,7 +37,7 @@ class UIRenderer(
     
     private val smallTextPaint = Paint().apply {
         color = Color.WHITE
-        textSize = GameConstants.MEDIUM_TEXT_SIZE
+        textSize = DensityUtils.UI.getTextMedium()
         typeface = Typeface.DEFAULT
         textAlign = Paint.Align.CENTER
         isAntiAlias = true
@@ -51,7 +51,7 @@ class UIRenderer(
     
     private val buttonTextPaint = Paint().apply {
         color = Color.BLACK
-        textSize = GameConstants.MEDIUM_TEXT_SIZE
+        textSize = DensityUtils.UI.getTextMedium()
         typeface = Typeface.DEFAULT_BOLD
         textAlign = Paint.Align.CENTER
         isAntiAlias = true
