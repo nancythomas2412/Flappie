@@ -906,19 +906,18 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback,
 
     /**
      * Calculate global pipe speed that all pipes use (prevents spacing changes)
-     * Custom progression: slower start, gradual increase, lower max speed
+     * Custom progression: normal start, gradual increase, higher max speed
      */
     private fun calculateGlobalPipeSpeed(score: Int): Float {
-        return when {
-            score <= 100 -> 0.95f    // Score 0-100: slightly slower start
-            score <= 299 -> 1.1f     // Score 101-299: slightly faster
-            else -> {
-                // Score 300+: increase by 0.1f every 150 points, max 5.2f
-                val adjustedScore = score - 300
-                val increase = (adjustedScore / 150) * 0.1f
-                5.2f.coerceAtMost(1.1f + increase)
-            }
-        }
+        // Smooth, gradual speed progression instead of discrete jumps
+        val baseSpeed = GameConstants.PIPE_BASE_SPEED
+        val maxSpeed = GameConstants.PIPE_MAX_SPEED
+        val increaseRate = GameConstants.PIPE_SPEED_INCREASE
+        val scoreInterval = GameConstants.PIPE_SCORE_INTERVAL.toFloat()
+
+        // Gradual linear increase: smoother than discrete jumps
+        val speedMultiplier = 1.0f + (score / scoreInterval) * increaseRate
+        return (baseSpeed * speedMultiplier).coerceAtMost(maxSpeed)
     }
     
     /**
