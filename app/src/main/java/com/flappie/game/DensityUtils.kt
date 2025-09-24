@@ -79,7 +79,7 @@ object DensityUtils {
         fun getCoinSize(): Float = dp(55f) // Increased by 10% for better visibility
 
         fun getPipeWidth(): Float = dp(30f) // Reduced more for easier navigation
-        fun getPipeSpeed(): Float = scale(1f) // Original 1.0.3/1.0.4 base speed
+        fun getPipeSpeed(): Float = scale(0.92f) // Original 1.0.3/1.0.4 base speed
         fun getPipeGapSize(): Float {
             // Dynamic gap based on screen height for consistent difficulty
             val baseGapRatio = 0.25f // 25% of screen height
@@ -130,6 +130,9 @@ object DensityUtils {
      */
     object Layout {
         fun getTopSafeArea(): Float = scale(24f) // Account for status bar
+
+        // Portrait-only gap calculation - density scaled with reasonable maximum
+        fun getPortraitMinGap(): Float = kotlin.math.min(scale(120f), screenHeight * 0.10f)
     }
 
 }

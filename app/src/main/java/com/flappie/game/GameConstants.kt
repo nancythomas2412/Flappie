@@ -49,8 +49,9 @@ object GameConstants {
     const val PIPE_MAX_SPEED = 7f
     const val PIPE_SPEED_INCREASE = 0.1f
     const val PIPE_SCORE_INTERVAL = 15  // Points needed for difficulty increase
-    const val PIPE_MIN_GAP_TOP = 200f
-    const val PIPE_MIN_GAP_BOTTOM = 200f
+    // Portrait-only gap calculations - density scaled for device compatibility
+    val PIPE_MIN_GAP_TOP get() = DensityUtils.Layout.getPortraitMinGap()
+    val PIPE_MIN_GAP_BOTTOM get() = DensityUtils.Layout.getPortraitMinGap()
     const val PIPE_CAP_WIDTH = 10f
     const val PIPE_CAP_HEIGHT = 30f
     const val PIPE_COLLISION_FORGIVENESS = 5f

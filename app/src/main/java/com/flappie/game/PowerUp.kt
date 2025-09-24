@@ -47,8 +47,8 @@ class PowerUp(
 
         if (distance < GameConstants.COLLECTIBLE_ATTRACTION_RANGE) {
             val attractionForce = GameConstants.COLLECTIBLE_ATTRACTION_FORCE
-            x += (dx / distance) * attractionForce * 0.4f  // Moderate x attraction
-            y += (dy / distance) * attractionForce * 1.2f  // Strong y attraction
+            x += (dx / distance) * attractionForce * 0.45f  // Enhanced x attraction (+12.5%)
+            y += (dy / distance) * attractionForce * 1.8f   // Enhanced y attraction (+50%)
         } else {
             // Natural floating when not attracted
             y += floatingAnimator.getNaturalFloatOffset()

@@ -49,8 +49,8 @@ class Coin(
         val attractionForce = if (magnetActive) GameConstants.COIN_MAGNET_FORCE else GameConstants.COLLECTIBLE_ATTRACTION_FORCE
 
         if (distance < attractionRange) {
-            x += (dx / distance) * attractionForce * 0.3f  // Moderate x attraction
-            y += (dy / distance) * attractionForce * 1.5f  // Strong y attraction
+            x += (dx / distance) * attractionForce * 0.45f  // Enhanced x attraction (+50%)
+            y += (dy / distance) * attractionForce * 1.8f   // Enhanced y attraction (+20%)
         } else {
             // Natural floating movement
             y += floatingAnimator.getNaturalFloatOffset()
