@@ -1,4 +1,4 @@
-# 📱 FlappieGame Google Play Store Assets Guide
+# 📱 Glacier Bird Google Play Store Assets Guide
 
 ## ✅ COMPLETED ASSETS
 
@@ -19,9 +19,9 @@
 
 **Suggested Content:**
 ```
-[FlappieGame Logo] + [Flying Bird] + [Coins/Powerups] + [Game Title Text]
+[Glacier Bird Logo] + [Flying Bird] + [Coins/Powerups] + [Game Title Text]
 Background: Gradient sky (day to night theme from your game)
-Text: "FlappieGame" + tagline: "Fly Through Adventure!"
+Text: "Glacier Bird" + tagline: "Fly Through Adventure!"
 ```
 
 **Design Elements Available:**
@@ -66,7 +66,7 @@ Text: "FlappieGame" + tagline: "Fly Through Adventure!"
 ## 📋 GOOGLE PLAY CONSOLE REQUIREMENTS
 
 ### Store Listing Information:
-- **App Title:** FlappieGame
+- **App Title:** Glacier Bird
 - **Short Description:** "Fly through pipes in this addictive bird game with power-ups and achievements!"
 - **Full Description:** [Available in GOOGLE-PLAY-CHECKLIST.md]
 - **Category:** Games > Arcade
@@ -104,4 +104,4 @@ To get your app live fastest:
 **Estimated time:** 2-3 hours for all assets
 **Review time:** 1-3 days after submission
 
-Your FlappieGame has excellent artwork - these assets will showcase it beautifully! 🚀
+Your Glacier Bird has excellent artwork - these assets will showcase it beautifully! 🚀

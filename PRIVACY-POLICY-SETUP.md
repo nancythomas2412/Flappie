@@ -1,4 +1,4 @@
-# 🔒 Privacy Policy Setup Guide for FlappieGame
+# 🔒 Privacy Policy Setup Guide for Glacier Bird
 
 Your comprehensive privacy policy has been created! Follow these steps to host it online and integrate it with your app.
 
@@ -16,7 +16,7 @@ Your comprehensive privacy policy has been created! Follow these steps to host i
 
 1. **Create a new GitHub repository:**
    ```
-   Repository name: flappie-privacy-policy
+   Repository name: glacier bird-privacy-policy
    Make it Public
    Initialize with README
    ```
@@ -35,7 +35,7 @@ Your comprehensive privacy policy has been created! Follow these steps to host i
 
 4. **Your URL will be:**
    ```
-   https://[your-username].github.io/flappie-privacy-policy/
+   https://[your-username].github.io/glacier bird-privacy-policy/
    ```
 
 ### Method 2: Netlify (FREE)
@@ -64,7 +64,7 @@ Your comprehensive privacy policy has been created! Follow these steps to host i
 
 **Example:**
 ```html
-<p><strong>Email:</strong> support@flappiegame.com</p>
+<p><strong>Email:</strong> support@glacier birdgame.com</p>
 <p><strong>Developer:</strong> YourName Studios</p>
 ```
 
@@ -78,7 +78,7 @@ Once hosted, update the privacy policy URL in your app:
 const val PRIVACY_POLICY_URL = "https://REPLACE-WITH-YOUR-ACTUAL-PRIVACY-POLICY-URL.com/privacy-policy.html"
 
 // AFTER (your actual URL)
-const val PRIVACY_POLICY_URL = "https://your-username.github.io/flappie-privacy-policy/"
+const val PRIVACY_POLICY_URL = "https://your-username.github.io/glacier bird-privacy-policy/"
 ```
 
 ## 📱 Google Play Console Setup

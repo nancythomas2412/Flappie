@@ -4,12 +4,19 @@ plugins {
     // id 'com.google.gms.google-services' // Disabled until firebase setup
 }
 
+// Load keystore properties
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
-    namespace = 'com.flappie.game'
+    namespace = 'com.glacierbird.game'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.flappie.game"
+        applicationId "com.glacierbird.game"
         minSdk 24
         targetSdk 35
         versionCode 5
@@ -26,10 +33,12 @@ android {
         
         release {
             // Production signing configuration for Google Play Store
-            storeFile file('../keystore/flappie-release-key.keystore')
-            storePassword 'FlappieGame2024!'
-            keyAlias 'flappie-key'
-            keyPassword 'FlappieGame2024!'
+            if (keystorePropertiesFile.exists()) {
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+            }
         }
     }
 

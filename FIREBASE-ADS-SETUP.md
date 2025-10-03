@@ -2,7 +2,7 @@
 
 ## ✅ IMPLEMENTATION COMPLETE
 
-Your FlappieGame now has **professional-grade remote ad control**! You can enable/disable ads dynamically without app updates.
+Your Glacier Bird now has **professional-grade remote ad control**! You can enable/disable ads dynamically without app updates.
 
 ### 🎯 **What's Been Added:**
 
@@ -31,15 +31,15 @@ Your FlappieGame now has **professional-grade remote ad control**! You can enabl
 
 1. Go to [Firebase Console](https://console.firebase.google.com/)
 2. Click "Add project"
-3. Project name: "FlappieGame"
+3. Project name: "Glacier Bird"
 4. Enable Google Analytics (recommended)
 5. Choose or create Analytics account
 
 ### 2. **Add Android App to Firebase** (3 minutes)
 
 1. Click "Add app" → Android icon
-2. Package name: `com.flappie.game`
-3. App nickname: "FlappieGame"
+2. Package name: `com.glacier bird.game`
+3. App nickname: "Glacier Bird"
 4. Debug SHA-1: (optional for now)
 5. Download `google-services.json`
 6. **IMPORTANT:** Place in `app/` folder (replace template)
@@ -49,8 +49,8 @@ Your FlappieGame now has **professional-grade remote ad control**! You can enabl
 1. Go to [AdMob Console](https://apps.admob.com/)
 2. Sign in with same Google account
 3. Click "Add app" → "Android"
-4. App name: "FlappieGame"
-5. Package name: `com.flappie.game`
+4. App name: "Glacier Bird"
+5. Package name: `com.glacier bird.game`
 6. Create ad units:
    - Banner ad unit
    - Interstitial ad unit
@@ -206,7 +206,7 @@ Your existing privacy policy already covers this:
 
 ## 🎉 **You're Now Enterprise-Ready!**
 
-Your FlappieGame now has the same remote control capabilities as apps like:
+Your Glacier Bird now has the same remote control capabilities as apps like:
 - Candy Crush Saga
 - Clash of Clans
 - Angry Birds

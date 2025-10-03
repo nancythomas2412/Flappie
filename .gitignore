@@ -10,6 +10,11 @@
 .cxx
 local.properties
 
+# Keystore properties and files (contains passwords)
+keystore.properties
+*.keystore
+keystore/
+
 # Build outputs
 app/build/
 app/release/

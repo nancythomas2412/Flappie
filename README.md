@@ -1,6 +1,6 @@
-# 🐦 FlappieGame
+# ❄️ Glacier Bird
 
-A modern, feature-rich Flappy Bird-style game built with Kotlin for Android. Experience smooth gameplay with power-ups, achievements, customizable birds, and a lives system!
+A modern, feature-rich bird flying game built with Kotlin for Android. Navigate through ice caves with smooth gameplay, power-ups, achievements, customizable birds, and a lives system!
 
 ## 🎮 Game Features
 
@@ -32,7 +32,7 @@ A modern, feature-rich Flappy Bird-style game built with Kotlin for Android. Exp
 
 ### 1. Import Project
 1. Open Android Studio
-2. File → Open → Select this "FlappieGame" folder
+2. File → Open → Select this "Glacier Bird" folder
 3. Wait for Gradle sync to complete
 
 ### 2. Build and Run
@@ -48,8 +48,8 @@ A modern, feature-rich Flappy Bird-style game built with Kotlin for Android. Exp
 
 ## Project Structure
 ```
-FlappieGame/
-├── app/src/main/java/com/flappie/game/
+Glacier Bird/
+├── app/src/main/java/com/glacierbird/game/
 │   ├── MainActivity.kt       # Entry point
 │   ├── GameView.kt          # Main game logic
 │   ├── GameThread.kt        # Game loop thread

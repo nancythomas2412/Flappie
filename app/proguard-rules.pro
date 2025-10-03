@@ -20,10 +20,10 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# ===== FLAPPIE GAME SPECIFIC RULES =====
+# ===== GLACIER BIRD GAME SPECIFIC RULES =====
 
 # Keep all game classes to prevent gameplay issues
--keep class com.flappie.game.** { *; }
+-keep class com.glacierbird.game.** { *; }
 
 # Keep enum classes (used for game states, power-ups, etc.)
 -keepclassmembers enum * {
@@ -36,30 +36,30 @@
 -keep class com.android.billingclient.api.** { *; }
 
 # Keep data classes used for billing
--keep class com.flappie.game.BillingCallback { *; }
--keep class com.flappie.game.PurchaseData { *; }
--keep class com.flappie.game.ProductInfo { *; }
+-keep class com.glacierbird.game.BillingCallback { *; }
+-keep class com.glacierbird.game.PurchaseData { *; }
+-keep class com.glacierbird.game.ProductInfo { *; }
 
 # Keep TouchCommand sealed class hierarchy
--keep class com.flappie.game.TouchCommand { *; }
--keep class com.flappie.game.TouchCommand$* { *; }
+-keep class com.glacierbird.game.TouchCommand { *; }
+-keep class com.glacierbird.game.TouchCommand$* { *; }
 
 # Preserve sprite data classes
--keep class com.flappie.game.BirdSprites { *; }
--keep class com.flappie.game.HeartSprites { *; }
--keep class com.flappie.game.PowerUpSprites { *; }
--keep class com.flappie.game.CoinSprites { *; }
+-keep class com.glacierbird.game.BirdSprites { *; }
+-keep class com.glacierbird.game.HeartSprites { *; }
+-keep class com.glacierbird.game.PowerUpSprites { *; }
+-keep class com.glacierbird.game.CoinSprites { *; }
 
 # Achievement and statistics data classes
--keep class com.flappie.game.Achievement { *; }
--keep class com.flappie.game.GameStatistics { *; }
--keep class com.flappie.game.PerformanceMetrics { *; }
--keep class com.flappie.game.DailyBonus { *; }
--keep class com.flappie.game.BirdSkinInfo { *; }
+-keep class com.glacierbird.game.Achievement { *; }
+-keep class com.glacierbird.game.GameStatistics { *; }
+-keep class com.glacierbird.game.PerformanceMetrics { *; }
+-keep class com.glacierbird.game.DailyBonus { *; }
+-keep class com.glacierbird.game.BirdSkinInfo { *; }
 
 # Tutorial system
--keep class com.flappie.game.TutorialStep { *; }
--keep class com.flappie.game.TutorialHighlight { *; }
+-keep class com.glacierbird.game.TutorialStep { *; }
+-keep class com.glacierbird.game.TutorialHighlight { *; }
 
 # Android components
 -keep public class * extends android.app.Activity

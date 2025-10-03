@@ -1,4 +1,4 @@
-# Release Signing Setup for Flappie Game
+# Release Signing Setup for Glacier Bird Game
 
 ## Generate Production Keystore
 
@@ -9,7 +9,7 @@
 Open terminal in the project directory and run:
 
 ```bash
-keytool -genkey -v -keystore flappie-release-key.keystore -alias flappie-key -keyalg RSA -keysize 2048 -validity 10000
+keytool -genkey -v -keystore glacier bird-release-key.keystore -alias glacier bird-key -keyalg RSA -keysize 2048 -validity 10000
 ```
 
 This will prompt you for:
@@ -29,9 +29,9 @@ Replace the release signing config in `app/build.gradle`:
 
 ```gradle
 release {
-    storeFile file('/path/to/your/flappie-release-key.keystore')
+    storeFile file('/path/to/your/glacier bird-release-key.keystore')
     storePassword 'YOUR_KEYSTORE_PASSWORD'
-    keyAlias 'flappie-key'
+    keyAlias 'glacier bird-key'
     keyPassword 'YOUR_KEY_PASSWORD'
 }
 ```

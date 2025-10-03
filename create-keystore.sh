@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "🔐 FlappieGame Keystore Generator"
+echo "🔐 Glacier Bird Keystore Generator"
 echo "================================"
 echo ""
 echo "This script will create your release keystore for Google Play Store."
@@ -21,8 +21,8 @@ echo ""
 
 # Generate keystore
 keytool -genkey -v \
-    -keystore flappie-release-key.keystore \
-    -alias flappie-key \
+    -keystore glacierbird-release-key.keystore \
+    -alias glacierbird-key \
     -keyalg RSA \
     -keysize 2048 \
     -validity 10000
@@ -31,9 +31,9 @@ echo ""
 echo "✅ Keystore created successfully!"
 echo ""
 echo "IMPORTANT: Save the following information securely:"
-echo "- Keystore file: $(pwd)/flappie-release-key.keystore"
+echo "- Keystore file: $(pwd)/glacierbird-release-key.keystore"
 echo "- Keystore password: (what you just entered)"
-echo "- Key alias: flappie-key"
+echo "- Key alias: glacierbird-key"
 echo "- Key password: (what you just entered)"
 echo ""
 echo "⚠️  CRITICAL: Keep this keystore file safe!"

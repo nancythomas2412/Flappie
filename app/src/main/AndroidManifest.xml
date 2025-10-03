@@ -20,7 +20,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Flappie"
+        android:theme="@style/Theme.GlacierBird"
         tools:targetApi="31">
 
         <!-- AdMob App ID (disabled for initial release) -->
@@ -33,7 +33,7 @@
             android:name=".SplashActivity"
             android:exported="true"
             android:resizeableActivity="true"
-            android:theme="@style/Theme.Flappie.Splash">
+            android:theme="@style/Theme.GlacierBird.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -46,6 +46,6 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:resizeableActivity="true"
-            android:theme="@style/Theme.Flappie.Fullscreen" />
+            android:theme="@style/Theme.GlacierBird.Fullscreen" />
     </application>
 </manifest>

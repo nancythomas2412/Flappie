@@ -1,11 +1,11 @@
-# 📱 Google Play Store Launch Checklist for FlappieGame
+# 📱 Google Play Store Launch Checklist for Glacier Bird
 
 ## ✅ COMPLETED
 - [x] **Privacy Policy** - Created and ready to host
 - [x] **App Signing** - Production keystore created and configured
 - [x] **Versioning** - Set to v1.0.0 (versionCode: 1)
 - [x] **Release Build Config** - Optimized with ProGuard/R8
-- [x] **Package Name** - com.flappie.game (unique identifier)
+- [x] **Package Name** - com.glacier bird.game (unique identifier)
 
 ## 🔄 IN PROGRESS
 - [ ] **Release AAB Build** - Currently building (R8 optimization)
@@ -30,7 +30,7 @@
 - [ ] **Data Safety Form** - Declare what data you collect
 - [ ] **Content Rating** - Complete questionnaire 
 - [ ] **Target Audience** - Select age groups
-- [ ] **Ads Declaration** - Declare if app shows ads (No for FlappieGame)
+- [ ] **Ads Declaration** - Declare if app shows ads (No for Glacier Bird)
 
 ### 4. Upload & Testing
 - [ ] **Upload AAB file** to Production track
@@ -47,7 +47,7 @@ Fly through pipes in this addictive bird game with power-ups and achievements!
 
 ### Full Description (Sample):
 ```
-🐦 FlappieGame - The Ultimate Bird Adventure!
+🐦 Glacier Bird - The Ultimate Bird Adventure!
 
 Soar through challenging obstacles in this modern twist on the classic bird game! 
 
@@ -74,14 +74,14 @@ Soar through challenging obstacles in this modern twist on the classic bird game
 • Stress relief and relaxation
 • Improving hand-eye coordination
 
-Download FlappieGame today and join thousands of players enjoying this polished, professional bird adventure! Can you master all the power-ups and achieve the highest score?
+Download Glacier Bird today and join thousands of players enjoying this polished, professional bird adventure! Can you master all the power-ups and achieve the highest score?
 
 No ads, no tracking, no internet required - just pure gaming fun! 🚀
 ```
 
 ### Release Notes v1.0.0:
 ```
-🎉 Welcome to FlappieGame!
+🎉 Welcome to Glacier Bird!
 
 Initial release featuring:
 • Classic bird gameplay with modern polish
@@ -91,7 +91,7 @@ Initial release featuring:
 • Comprehensive tutorial for new players
 • Offline play with local progress saving
 
-Thank you for downloading FlappieGame! 🐦
+Thank you for downloading Glacier Bird! 🐦
 ```
 
 ## 📊 APP CATEGORY & METADATA
@@ -135,6 +135,6 @@ After approval:
 
 ## 🚀 YOUR APP IS READY!
 
-FlappieGame demonstrates professional-level game development and is well-positioned for Play Store success. The comprehensive feature set, polish, and compliance make it an excellent candidate for positive user reception.
+Glacier Bird demonstrates professional-level game development and is well-positioned for Play Store success. The comprehensive feature set, polish, and compliance make it an excellent candidate for positive user reception.
 
 **Estimated approval probability: 95%+** ⭐⭐⭐⭐⭐

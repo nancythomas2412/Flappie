@@ -1,4 +1,4 @@
-# 🐦 Bird Skin Assets Specification for Flappie Game
+# ❄️ Bird Skin Assets Specification for Glacier Bird Game
 
 ## Asset Requirements
 
@@ -6,7 +6,7 @@
 - **Format:** PNG with transparency
 - **Resolution:** 128x128px (base size), provide 2x and 3x versions
 - **Color Mode:** RGBA (32-bit with alpha channel)
-- **Style:** Consistent with Flappy Bird aesthetic
+- **Style:** Consistent with ice cave and arctic bird aesthetic
 - **Animation Frames:** 5 frames per skin (neutral, transition, wingsUp, wingsDown, sad)
 
 ### **File Naming Convention**

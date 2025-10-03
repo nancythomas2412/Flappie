@@ -1,4 +1,4 @@
-# 🔐 App Signing Setup for FlappieGame
+# 🔐 App Signing Setup for Glacier Bird
 
 Your app needs to be signed with a release keystore for Google Play Store upload. Follow these steps carefully.
 
@@ -14,7 +14,7 @@ Run the keystore generator script:
 
 ```bash
 # Navigate to your project directory
-cd /Users/jibinkmathew/Downloads/FlappieGame
+cd /Users/jibinkmathew/Downloads/Glacier Bird
 
 # Run the keystore generator (I've created this for you)
 ./create-keystore.sh
@@ -43,9 +43,9 @@ After creating your keystore, update the gradle configuration:
 
 ```gradle
 release {
-    storeFile file('../keystore/flappie-release-key.keystore')
+    storeFile file('../keystore/glacier bird-release-key.keystore')
     storePassword 'YOUR_KEYSTORE_PASSWORD'
-    keyAlias 'flappie-key'
+    keyAlias 'glacier bird-key'
     keyPassword 'YOUR_KEY_PASSWORD'
 }
 ```
@@ -70,8 +70,8 @@ Test your signing configuration:
 ## 🔒 Security Information
 
 ### What You Created:
-- **Keystore file:** `keystore/flappie-release-key.keystore`
-- **Key alias:** `flappie-key`
+- **Keystore file:** `keystore/glacier bird-release-key.keystore`
+- **Key alias:** `glacier bird-key`
 - **Validity:** 27+ years (standard for app stores)
 - **Algorithm:** RSA 2048-bit (secure)
 

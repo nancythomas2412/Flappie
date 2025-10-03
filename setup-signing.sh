@@ -1,14 +1,14 @@
 #!/bin/bash
 
-echo "🔐 FlappieGame App Signing Setup"
+echo "🔐 GlacierBird App Signing Setup"
 echo "================================"
 echo ""
 echo "This will set up app signing for Google Play Store upload."
 echo ""
 
 # Check if keystore already exists
-if [ -f "keystore/flappie-release-key.keystore" ]; then
-    echo "⚠️  Keystore already exists at keystore/flappie-release-key.keystore"
+if [ -f "keystore/glacierbird-release-key.keystore" ]; then
+    echo "⚠️  Keystore already exists at keystore/glacierbird-release-key.keystore"
     echo "   If you want to create a new one, delete the existing keystore first."
     echo ""
     echo "To build signed release:"
@@ -30,8 +30,8 @@ cd keystore
 
 # Generate the keystore
 keytool -genkey -v \
-    -keystore flappie-release-key.keystore \
-    -alias flappie-key \
+    -keystore glacierbird-release-key.keystore \
+    -alias glacierbird-key \
     -keyalg RSA \
     -keysize 2048 \
     -validity 10000

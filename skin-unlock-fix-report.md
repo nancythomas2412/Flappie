@@ -12,7 +12,7 @@ The SoundType enum was defined at the package level in SoundManager.kt, but the 
 ### **Created Separate SoundType.kt File**
 ```kotlin
 // NEW FILE: SoundType.kt
-package com.flappie.game
+package com.glacier bird.game
 
 enum class SoundType(val priority: Int) {
     JUMP(3), // PRIORITY_HIGH

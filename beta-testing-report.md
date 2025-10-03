@@ -1,4 +1,4 @@
-# 🧪 Beta Testing Report - FlappieGame
+# 🧪 Beta Testing Report - Glacier Bird
 
 ## ✅ **CODE VALIDATION COMPLETED**
 

@@ -1,4 +1,4 @@
-# Privacy Policy Hosting Guide for Flappie Game
+# Privacy Policy Hosting Guide for Glacier Bird Game
 
 ## Quick Setup Options
 
@@ -12,8 +12,8 @@
 **Steps:**
 ```bash
 # Create new repo on GitHub, then:
-git clone https://github.com/yourusername/flappie-privacy.git
-cd flappie-privacy
+git clone https://github.com/yourusername/glacier bird-privacy.git
+cd glacier bird-privacy
 cp /path/to/privacy-policy.html .
 git add privacy-policy.html
 git commit -m "Add privacy policy"
@@ -52,7 +52,7 @@ const val PRIVACY_POLICY_URL = "https://your-website.com/privacy-policy"
 
 With your actual URL:
 ```kotlin
-const val PRIVACY_POLICY_URL = "https://yourusername.github.io/flappie-privacy/privacy-policy.html"
+const val PRIVACY_POLICY_URL = "https://yourusername.github.io/glacier bird-privacy/privacy-policy.html"
 ```
 
 ## Customization Required
@@ -86,10 +86,10 @@ Before submitting to Play Store:
 
 ## Example URLs After Setup
 
-- GitHub Pages: `https://johndoe.github.io/flappie-privacy/privacy-policy.html`
-- Firebase: `https://flappie-game-12345.web.app/privacy-policy.html`
-- Netlify: `https://flappie-privacy.netlify.app/privacy-policy.html`
-- Custom Domain: `https://mycompany.com/flappie-privacy-policy.html`
+- GitHub Pages: `https://johndoe.github.io/glacier bird-privacy/privacy-policy.html`
+- Firebase: `https://glacier bird-game-12345.web.app/privacy-policy.html`
+- Netlify: `https://glacier bird-privacy.netlify.app/privacy-policy.html`
+- Custom Domain: `https://mycompany.com/glacier bird-privacy-policy.html`
 
 ## Legal Compliance
 

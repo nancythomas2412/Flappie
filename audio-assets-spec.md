@@ -1,4 +1,4 @@
-# 🎵 Audio Assets Specification for Flappie Game
+# 🎵 Audio Assets Specification for Glacier Bird Game
 
 ## Professional Audio Requirements
 
